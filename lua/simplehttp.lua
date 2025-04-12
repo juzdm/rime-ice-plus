@@ -65,7 +65,7 @@ end
 -- 使用 curl 执行 HTTP 请求并读取响应
 local function http_request(url, method, headers, body)
     local request = create_request(method, url.host, url.path .. (url.query and "?" .. url.query or ""), headers, body)
-    local cmd = string.format("CURL_HOME=/dev/null curl --config /dev/null -s -K -q -i -X %s '%s'", method, url.scheme .. "://" .. url.host .. (url.port and ":" .. url.port or "") .. url.path .. (url.query and "?" .. url.query or ""))
+    local cmd = string.format("CURL_HOME=/dev/null curl --config /dev/null -s -q -i -X %s '%s'", method, url.scheme .. "://" .. url.host .. (url.port and ":" .. url.port or "") .. url.path .. (url.query and "?" .. url.query or ""))
     
     -- 使用 io.popen 执行 curl 命令
     local handle = io.popen(cmd)

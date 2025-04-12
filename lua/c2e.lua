@@ -18,14 +18,9 @@ local function translator(input, seg, env)
    local reply = http.request(make_url(string))
    local data = json.decode(reply)
 
-   print("c2e url", make_url(string))
-   print("c2e reply", reply)
-
    for i, v in ipairs(data) do
       -- get the output string
       local output = v[1][1]
-
-      print("c2e output", output)
 
       local c = Candidate("translate", seg.start, seg._end, output, "🇺🇸")
       c.quality = 100
