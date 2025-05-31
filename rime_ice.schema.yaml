@@ -75,8 +75,10 @@ engine:
     - lua_translator@*unicode            # Unicode
     - lua_translator@*number_translator  # 数字、金额大写
     - lua_translator@*calc_translator    # 计算器
+    - lua_translator@*nasal_helper # 在这里添加 Lua Translator
     - lua_translator@*force_gc           # 暴力 GC
   filters:
+    - lua_filter@*pinyin_comment
     - lua_filter@*corrector                         # 错音错字提示
     - reverse_lookup_filter@radical_reverse_lookup  # 部件拆字滤镜
     - lua_filter@*autocap_filter                    # 英文自动大写
@@ -295,6 +297,7 @@ translator:
   enable_word_completion: true # 大于 4 音节的词条自动补全，librime > 1.11.2
   spelling_hints: 8            # corrector.lua ：为了让错音错字提示的 Lua 同时适配全拼双拼，将拼音显示在 comment 中
   always_show_comments: true   # corrector.lua ：Rime 默认在 preedit 等于 comment 时取消显示 comment，这里强制一直显示，供 corrector.lua 做判断用。
+  keep_comments: false          # corrector.lua ：保留拼音注释
   initial_quality: 1.2         # 拼音的权重应该比英文大
   comment_format:              # 标记拼音注释，供 corrector.lua 做判断用
     - xform/^/［/
@@ -447,21 +450,21 @@ speller:
     # 韵母
     # - derive/ang$/an/
     # - derive/an$/ang/
-    # - derive/eng$/en/
-    # - derive/en$/eng/
-    # - derive/in$/ing/
-    # - derive/ing$/in/
+    - derive/eng$/en/
+    - derive/en$/eng/
+    - derive/in$/ing/
+    - derive/ing$/in/
     # - derive/ian$/iang/
     # - derive/iang$/ian/
     # - derive/uan$/uang/
     # - derive/uang$/uan/
     # - derive/ai$/an/
     # - derive/an$/ai/
-    # - derive/ong$/un/
-    # - derive/un$/ong/
-    # - derive/ong$/on/
-    # - derive/iong$/un/
-    # - derive/un$/iong/
+    - derive/ong$/un/
+    - derive/un$/ong/
+    - derive/ong$/on/
+    - derive/iong$/un/
+    - derive/un$/iong/
     # - derive/ong$/eng/
     # - derive/eng$/ong/
     # 拼音音节
@@ -570,3 +573,4 @@ speller:
     - derive/(.+)ong$/$1on/ # lon → long
     - derive/([tl])eng$/$1en/ # ten → teng
     - derive/([qwrtypsdfghjklzxcbnm])([aeio])ng$/$1ng/ # lng → lang、leng、ling、long
+

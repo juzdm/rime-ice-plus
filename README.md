@@ -15,5 +15,8 @@
 - 汉译英 通过 Ctrl + e 触发
 - 英译汉 通过 Ctrl + h 触发   
 
+## 需要注意的点
+- yaml文件修改的时候，一定要严格对齐
+
 ## 安装
 安装方法请参考 https://github.com/iDvel/rime-ice
