@@ -59,3 +59,6 @@
 ## 安装说明
 
 详细安装步骤请参考 [Rime-ice 文档](https://github.com/iDvel/rime-ice)
+
+## 皮肤
+https://gist.github.com/lewangdev/f8ebbba24f464e915fb7d36857fcbbe5?permalink_comment_id=4530394
